@@ -1,0 +1,33 @@
+heat_template_version: 2013-05-23
+
+parameters:
+
+  server_image:
+    type: string
+  server_flavor:
+    type: string
+  ssh_key_name:
+    type: string
+  external_network_id:
+    type: string
+
+resources:
+  server:
+    type: server.yaml
+    properties:
+      image:
+        get_param: server_image
+      flavor:
+        get_param: server_flavor
+      key_name:
+        get_param: ssh_key_name
+      external_network_id:
+        get_param: external_network_id
+      allocation_pool:
+        start: 10.1.0.100
+        end: 10.1.0.150
+
+outputs:
+
+  server_ip:
+    value: {get_attr: [server_floating, floating_ip_address]}

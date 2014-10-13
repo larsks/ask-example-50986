@@ -1,0 +1,5 @@
+parameters:
+  server_image: fedora-20-x86_64-updated
+  server_flavor: m1.small
+  ssh_key_name: lars
+  external_network_id: 028d70dd-67b8-4901-8bdd-0c62b06cce2d
